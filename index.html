@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jorge Baez — Senior Business Intelligence & Data Analytics Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root[data-theme="dark"] {
+    --bg: #050505;
+    --bg2: #0a0a0a;
+    --bg3: #111111;
+    --surface: #151515;
+    --border: rgba(255,255,255,0.10);
+    --border2: rgba(79,124,255,0.35);
+    --text: #f5f5f5;
+    --text2: #a1a1aa;
+    --text3: #666666;
+    --accent: #4f7cff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --glow: rgba(79,124,255,0.15);
+    --tag-bg: rgba(79,124,255,0.1);
+    --tag-text: #7fa7ff;
+    --card-bg: #0c0c0c;
+    --nav-bg: rgba(5,5,5,0.88);
+    --sql-key: #4f7cff;
+    --sql-str: #00d4aa;
+    --sql-num: #ffd166;
+    --sql-com: #4d5a7c;
+    --hero-grid: rgba(255,255,255,0.025);
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f7ff;
+    --bg2: #eef1fb;
+    --bg3: #e6eaf8;
+    --surface: #ffffff;
+    --border: rgba(79,124,255,0.12);
+    --border2: rgba(79,124,255,0.3);
+    --text: #0d1226;
+    --text2: #4a5580;
+    --text3: #8892b8;
+    --accent: #2f5ce8;
+    --accent2: #00a888;
+    --accent3: #e03030;
+    --glow: rgba(47,92,232,0.08);
+    --tag-bg: rgba(47,92,232,0.08);
+    --tag-text: #2f5ce8;
+    --card-bg: #ffffff;
+    --nav-bg: rgba(245,247,255,0.9);
+    --sql-key: #2f5ce8;
+    --sql-str: #00a888;
+    --sql-num: #d4820a;
+    --sql-com: #8892b8;
+    --hero-grid: rgba(47,92,232,0.05);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    transition: background 0.4s, color 0.4s;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 64px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s;
+  }
+
+  .nav-logo {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-controls { display: flex; align-items: center; gap: 1rem; }
+
+  .lang-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 10px;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:hover { color: var(--accent); border-color: var(--border2); }
+
+  .theme-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .theme-btn:hover { color: var(--accent); border-color: var(--border2); }
+
+  .menu-toggle-btn {
+    display: none;
+    background: none; border: none;
+    color: var(--text2); cursor: pointer; font-size: 20px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px clamp(1.5rem, 5vw, 4rem) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--hero-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow-line {
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-eyebrow span {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .hero-title .line { display: block; overflow: visible; padding-bottom: 0.04em; }
+  .hero-title .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text2);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none; cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px;
+    background: none;
+    color: var(--text2);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* CODE WINDOW */
+  .hero-visual {
+    position: relative;
+  }
+  .code-window {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.8;
+    position: relative;
+  }
+  .code-window::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--border2), transparent, var(--border));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+  .code-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 12px 16px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff6b6b; }
+  .dot-y { background: #ffd166; }
+  .dot-g { background: #06d6a0; }
+  .code-file {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .code-body { padding: 20px; }
+  .code-body pre { margin: 0; white-space: pre; overflow: hidden; }
+  .kw { color: var(--sql-key); }
+  .str { color: var(--sql-str); }
+  .num { color: var(--sql-num); }
+  .cm { color: var(--sql-com); font-style: italic; }
+  .fn { color: #c792ea; }
+  .op { color: var(--text2); }
+
+  .code-cursor {
+    display: inline-block;
+    width: 2px; height: 14px;
+    background: var(--accent);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .metric-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 12px; padding: 12px 16px;
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+  }
+  .chip {
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text3);
+  }
+  .chip.active { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+
+  /* ── SECTION COMMON ── */
+  section {
+    padding: 7rem clamp(1.5rem, 5vw, 4rem);
+  }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    margin-bottom: 4rem;
+  }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow span {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text2);
+    margin-top: 0.75rem;
+    max-width: 480px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-photo-wrap {
+    position: relative;
+  }
+  .about-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(16px);
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .about-badge strong {
+    display: block;
+    font-size: 22px;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .about-text h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .about-text p {
+    color: var(--text2);
+    margin-bottom: 1.25rem;
+    font-size: 0.97rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  .skill-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px;
+    color: var(--text2);
+    font-family: 'Space Mono', monospace;
+  }
+  .skill-item::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  .experience-list { margin-top: 2rem; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    padding-top: 2px;
+  }
+  .exp-role {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .exp-company {
+    font-size: 12px;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    margin: 2px 0 6px;
+  }
+  .exp-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--glow), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--card-bg), var(--bg2));
+  }
+
+  .project-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--glow);
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+
+  .project-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .tag {
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid var(--border);
+  }
+
+  .project-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  .project-metrics {
+    display: flex; gap: 1.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .metric-item {}
+  .metric-val {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent2);
+  }
+  .metric-lbl {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── BLOG ── */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .blog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .blog-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+  .blog-meta {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .blog-type {
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    text-transform: uppercase;
+  }
+  .blog-date {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: 'Space Mono', monospace;
+  }
+  .blog-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .blog-excerpt {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+  .blog-read-more {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 1rem;
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .blog-read-more:hover { gap: 10px; }
+  .blog-read-more i { font-size: 10px; transition: gap 0.2s; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .contact-info p {
+    color: var(--text2);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+    color: var(--text2);
+  }
+  .contact-link:hover { border-color: var(--border2); color: var(--text); transform: translateX(4px); }
+  .contact-link i {
+    width: 32px; height: 32px;
+    background: var(--glow);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--accent);
+  }
+  .contact-link span { font-size: 14px; font-weight: 500; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    text-transform: uppercase;
+  }
+  .form-input, .form-textarea {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    resize: none;
+    outline: none;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { min-height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .footer-social {
+    display: flex; gap: 1rem;
+  }
+  .footer-social a {
+    color: var(--text3);
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover { color: var(--accent); }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 1.5rem;
+    z-index: 99;
+    gap: 1.25rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .project-card[style*="grid-column: 1 / -1"] > div { grid-template-columns: 1fr !important; }
+    .nav-links { display: none; }
+    .menu-toggle-btn { display: block; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    #blog .section-inner > div > div[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    #blog .blog-card[style*="border-left"] > div[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { flex-direction: column; gap: 1rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%; height: 1px;
+    background: var(--border);
+    margin: 0 clamp(1.5rem, 5vw, 4rem);
+    max-width: calc(100% - clamp(3rem, 10vw, 8rem));
+  }
+
+  /* Scrolled nav shadow */
+  nav.scrolled { box-shadow: 0 1px 30px rgba(0,0,0,0.2); }
+
+/* Final visual overrides — intentionally minimal and near-black */
+body{background:#050505;color:#f5f5f5}
+#main-nav{background:rgba(5,5,5,.88);border-bottom:1px solid rgba(255,255,255,.08)}
+.hero{background:#050505}
+section[id="projects"],section[id="contact"]{background:#0a0a0a!important}
+.project-card,.blog-card,.timeline-item,.code-window{background:#0c0c0c}
+</style>
+<style>
+.case-studies,.proof-section{padding:100px 0;background:#050505;color:#f5f5f5;border-top:1px solid #202020}
+.section-eyebrow,.case-area,.case-number{font-family:"Space Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:#6f91ff}
+.case-studies .section-title,.proof-section .section-title{max-width:760px;font-family:"Manrope",sans-serif;font-weight:800;line-height:1.15;letter-spacing:-.035em}
+.section-intro{max-width:720px;color:#9b9ba3;margin-top:16px}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+.case-card{background:#0b0b0b;border:1px solid #202020;padding:28px;display:flex;flex-direction:column}
+.case-number{margin-bottom:10px}.case-area{font-size:.65rem;margin-bottom:12px;color:#8da6ff}
+.case-card h3{font-family:"Manrope",sans-serif;font-size:1.45rem;line-height:1.15;margin-bottom:14px}
+.case-summary{color:#d1d1d5;min-height:82px}
+.case-block{border-top:1px solid #202020;padding-top:16px;margin-top:18px}
+.case-block strong{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.case-block p{color:#9b9ba3;font-size:.9rem;margin-top:6px}
+.case-link{display:inline-block;padding:11px 15px;margin-top:24px;border:1px solid #3d5fcc;font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:700}
+.primary-link{background:#4f73ff;color:white}.primary-link:hover{background:#6485ff}
+.proof-section{background:#090909}.proof-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.proof-inner .case-link{white-space:nowrap}
+@media(max-width:900px){.case-grid{grid-template-columns:1fr}.case-summary{min-height:0}.proof-inner{flex-direction:column;align-items:flex-start}}
+</style>
+<style id="final-portfolio-overrides">
+.hero-title, .section-title, .project-title, .blog-title, .case-card h3,
+.nav-logo, #modal-title { font-family: 'Manrope', sans-serif; }
+.hero-title { line-height: 1.08 !important; }
+.hero-title .line { overflow: visible !important; padding-bottom: .04em; }
+.blog-read-more { display:inline-flex; align-items:center; gap:7px; text-decoration:none; }
+.blog-read-more:hover { gap:10px; }
+.case-card h3 { line-height:1.15; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">Jorge Baez</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav-about">About</a></li>
+    <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+    <li><a href="#blog" data-i18n="nav-blog">Blog</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="lang-btn" id="lang-btn">ES</button>
+    <button class="theme-btn" id="theme-btn" title="Toggle theme">
+      <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+    <button class="menu-toggle-btn" id="mobile-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" data-i18n="nav-about">About</a>
+  <a href="#projects" data-i18n="nav-projects">Projects</a>
+  <a href="#blog" data-i18n="nav-blog">Blog</a>
+  <a href="#contact" data-i18n="nav-contact">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span data-i18n="hero-eyebrow">Senior Business Intelligence & Data Analytics Analyst</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="line" data-i18n="hero-title-1">I transform complex</span>
+        <span class="line"><span class="accent" data-i18n="hero-title-2">data into</span></span>
+        <span class="line" data-i18n="hero-title-3">better decisions.</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero-sub">
+        5+ years turning complex data into decision-ready intelligence. Power BI · SQL · Python · Stakeholder Management · Data Literacy · Business Strategy.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary" data-i18n="hero-cta1">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="CV-Jorge-Baez.pdf" download class="btn-ghost" data-i18n="hero-cta2">Download CV <i class="fa-solid fa-download"></i></a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label" data-i18n="stat-years">Years Exp.</div>
+        </div>
+        <div>
+          <div class="stat-num">30<span>%</span></div>
+          <div class="stat-label" data-i18n="stat-reduction">Manual Reduction</div>
+        </div>
+        <div>
+          <div class="stat-num">4<span>+</span></div>
+          <div class="stat-label" data-i18n="stat-companies">Industries</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CODE WINDOW -->
+    <div class="hero-visual">
+      <div class="code-window" style="animation: float 5s ease-in-out infinite;">
+        <div class="code-bar">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+          <span class="code-file">analysis.py</span>
+        </div>
+        <div class="code-body">
+          <pre><span class="cm"># AI adoption vs GDP — scatter plot</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> plotly.express <span class="kw">as</span> px
+
+df = pd.<span class="fn">read_sql</span>(
+    <span class="str">"SELECT country, gdp_per_capita,</span>
+<span class="str">       ai_adoption_pct, region, year
+  FROM world_indicators"</span>,
+    con=engine
+)
+fig = px.<span class="fn">scatter</span>(
+    df,
+    x=<span class="str">"gdp_per_capita"</span>,
+    y=<span class="str">"ai_adoption_pct"</span>,
+    color=<span class="str">"region"</span>,
+    size=<span class="str">"gdp_per_capita"</span>,
+    size_max=<span class="num">30</span>,
+    animation_frame=<span class="str">"year"</span>,
+    hover_name=<span class="str">"country"</span>,
+    template=<span class="str">"simple_white"</span>
+)
+fig.<span class="fn">show</span>()<span class="code-cursor"></span></pre>
+        </div>
+        <div class="metric-chips">
+          <div class="chip active">pandas</div>
+          <div class="chip active">plotly</div>
+          <div class="chip active">SQL</div>
+          <div class="chip active">Power BI</div>
+          <div class="chip">DAX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><span>01 — <span data-i18n="nav-about">About</span></span></div>
+      <h2 class="section-title" data-i18n="about-title">The analyst behind the decisions.</h2>
+      <p class="section-subtitle" data-i18n="about-subtitle">Business thinking, data fluency, and technical execution.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo-wrap fade-up">
+        <img src="image.png" alt="Jorge Baez" class="about-photo">
+        <div class="about-badge">
+          <strong>5+</strong>
+          <span data-i18n="badge-years">Years in BI</span>
+        </div>
+      </div>
+
+      <div class="about-text fade-up">
+        <h2 data-i18n="about-heading">Jorge Leonardo Báez Agreda</h2>
+        <p data-i18n="about-p1">
+          Systems Engineer from Universidad de Oriente (Venezuela, 2015) and Business Intelligence Expert from Universidad Europea. I combine business understanding, analytical thinking, and technical execution to turn data into useful decisions.
+        </p>
+        <p data-i18n="about-p2">
+          Currently at Aceros Turia as Senior BI Analyst, I work with stakeholders to translate business needs into reliable BI solutions, connect diverse data sources, and reduce the manual processes that slow decisions down.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-item">Power BI & DAX</div>
+          <div class="skill-item">SQL (T-SQL, PL/SQL)</div>
+          <div class="skill-item">Python (pandas)</div>
+          <div class="skill-item">Power Query</div>
+          <div class="skill-item">Data Modeling</div>
+          <div class="skill-item">Stakeholder Mgmt.</div>
+          <div class="skill-item">Data Literacy</div>
+          <div class="skill-item">Data Visualization</div>
+        </div>
+
+        <div style="margin: 1.5rem 0; padding: 1rem 1.25rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; border-left: 3px solid var(--accent);">
+          <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 6px;">Education</div>
+          <div style="font-size: 13.5px; color: var(--text); font-weight: 500;">Máster en Big Data <span style="color: var(--accent); font-size: 11px; font-family: 'Space Mono', monospace;">· En curso</span></div>
+          <div style="font-size: 12px; color: var(--accent); font-family: 'Space Mono', monospace; margin: 2px 0;">Universidad Europea</div>
+          <div style="font-size: 13.5px; color: var(--text); font-weight: 500; margin-top: 8px;">Experto en Business Intelligence</div>
+          <div style="font-size: 12px; color: var(--accent); font-family: 'Space Mono', monospace; margin: 2px 0;">Universidad Europea · Dic 2025</div>
+          <div style="font-size: 13.5px; color: var(--text); font-weight: 500; margin-top: 8px;">Ingeniero de Sistemas</div>
+          <div style="font-size: 12px; color: var(--accent); font-family: 'Space Mono', monospace; margin: 2px 0;">Universidad de Oriente · 2015</div>
+        </div>
+
+        <div class="experience-list">
+          <div class="exp-item">
+            <div class="exp-date">Dec 2022<br>Present</div>
+            <div>
+              <div class="exp-role" data-i18n="exp1-role">Senior BI Analyst</div>
+              <div class="exp-company">Aceros Turia</div>
+              <div class="exp-desc" data-i18n="exp1-desc">Executive dashboards · Stakeholder management · Anomaly detection · 30% less manual reporting · BI adoption training.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">Jul 2022<br>Oct 2022</div>
+            <div>
+              <div class="exp-role" data-i18n="exp2-role">Data Analyst</div>
+              <div class="exp-company">Primo</div>
+              <div class="exp-desc" data-i18n="exp2-desc">Standardized process dashboards · 25% greater business visibility · SQL & Excel data validation · Decision support.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">Ene 2022<br>Jul 2022</div>
+            <div>
+              <div class="exp-role" data-i18n="exp3-role">BI Analyst</div>
+              <div class="exp-company">DMS Software</div>
+              <div class="exp-desc" data-i18n="exp3-desc">KPI dashboards · SQL procedures · Data optimization · 20% reduction in manual reconciliations.</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">Ene 2019<br>Oct 2021</div>
+            <div>
+              <div class="exp-role" data-i18n="exp4-role">Data Analysis Coordinator</div>
+              <div class="exp-company">Sistemas Sentry</div>
+              <div class="exp-desc" data-i18n="exp4-desc">Custom dashboards · Multi-area monitoring models · 18% process efficiency improvement.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="CV-Jorge-Baez.pdf" download class="btn-primary" style="margin-top:1.5rem; width:fit-content;" data-i18n="about-cv-btn">
+          Download Full CV <i class="fa-solid fa-download"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects" style="background: var(--bg2);">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><span>02 — <span data-i18n="nav-projects">Projects</span></span></div>
+      <h2 class="section-title" data-i18n="proj-title">Data Visualization & BI Projects.</h2>
+      <p class="section-subtitle" data-i18n="proj-subtitle">Business problems, data solutions, measurable outcomes.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Featured PBI 1 -->
+      <div class="project-card featured fade-up">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+          <div class="project-icon" style="margin-bottom:0;"><i class="fa-solid fa-chart-line"></i></div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiMTI1YjJlYzQtNTY1NS00OTljLThhNzAtZGRlYTFiMzY0YjEzIiwidCI6IjNkNmQwOGMxLWJlMzAtNDhjNy05NWQzLTI0NTA3MTQ4ZmQ0NCJ9" target="_blank"
+            style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-family:'Space Mono',monospace; letter-spacing:0.07em; color:var(--accent2); border:1px solid rgba(0,212,170,0.3); border-radius:5px; padding:5px 12px; text-decoration:none; transition:all 0.2s; background:rgba(0,212,170,0.05);"
+            onmouseover="this.style.background='rgba(0,212,170,0.12)'" onmouseout="this.style.background='rgba(0,212,170,0.05)'">
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i> Live Dashboard
+          </a>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">SQL</span>
+          <span class="tag" style="color:var(--accent2); background:rgba(0,212,170,0.08); border-color:rgba(0,212,170,0.2);" data-i18n="tag-featured">Featured</span>
+        </div>
+        <div class="project-title" data-i18n="proj1-title">Executive Operations Intelligence — Aceros Turia</div>
+        <div class="project-desc" data-i18n="proj1-desc">
+          Replaced 6 disconnected Excel reports by connecting diverse data sources into a single Power BI workspace. Procurement, production, and distribution now visible in real time — eliminating manual consolidation for the executive team.
+        </div>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <div class="metric-val">30%</div>
+            <div class="metric-lbl" data-i18n="metric-manual">Manual Work ↓</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">6→1</div>
+            <div class="metric-lbl" data-i18n="metric-reports">Sources Unified</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">RT</div>
+            <div class="metric-lbl" data-i18n="metric-rt">Real-time</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PBI 2 -->
+      <div class="project-card fade-up">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+          <div class="project-icon" style="margin-bottom:0;"><i class="fa-solid fa-gauge-high"></i></div>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiOGMwZjZjZTgtODBkZi00ZjYzLThkYWUtODMyMDJkMWEyY2I2IiwidCI6IjNkNmQwOGMxLWJlMzAtNDhjNy05NWQzLTI0NTA3MTQ4ZmQ0NCJ9" target="_blank"
+            style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-family:'Space Mono',monospace; letter-spacing:0.07em; color:var(--accent2); border:1px solid rgba(0,212,170,0.3); border-radius:5px; padding:5px 12px; text-decoration:none; transition:all 0.2s; background:rgba(0,212,170,0.05);"
+            onmouseover="this.style.background='rgba(0,212,170,0.12)'" onmouseout="this.style.background='rgba(0,212,170,0.05)'">
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i> Live Dashboard
+          </a>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span>
+        </div>
+        <div class="project-title" data-i18n="proj2-title">KPI Monitoring & Decision Support</div>
+        <div class="project-desc" data-i18n="proj2-desc">Multi-source KPI dashboard eliminating manual Excel reporting. Business metrics consolidated from ERP and operational systems, with automated refresh and stakeholder-ready visual storytelling.</div>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <div class="metric-val">25%</div>
+            <div class="metric-lbl" data-i18n="metric-visibility">Visibility ↑</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python AI Viz -->
+      <div class="project-card fade-up" style="grid-column: 1 / -1;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items:start;">
+          <div>
+            <div class="project-icon"><i class="fa-brands fa-python"></i></div>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">plotly</span><span class="tag">SQL</span><span class="tag">EDA</span>
+            </div>
+            <div class="project-title" data-i18n="proj3-title">AI Adoption vs GDP — Python Data Visualization</div>
+            <div class="project-desc" data-i18n="proj3-desc">
+              Exploratory analysis of how a country's GDP per capita correlates with generative AI adoption. Data ingested via SQL, cleaned with pandas, visualized with animated Plotly scatter and box plots. Shows outliers like UAE and Singapore defying the income-adoption trend.
+            </div>
+            <div class="project-metrics">
+              <div class="metric-item">
+                <div class="metric-val">64%</div>
+                <div class="metric-lbl" data-i18n="metric-uae">UAE AI Adoption</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-val">5</div>
+                <div class="metric-lbl" data-i18n="metric-regions">World Regions</div>
+              </div>
+            </div>
+          </div>
+          <!-- Code snippet right side -->
+          <div class="code-window" style="font-size:11.5px;">
+            <div class="code-bar">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="code-file">ai_gdp_analysis.py</span>
+            </div>
+            <div class="code-body" style="padding:14px 16px;">
+              <pre style="white-space:pre; overflow:hidden;"><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> plotly.express <span class="kw">as</span> px
+
+df = pd.<span class="fn">read_sql</span>(<span class="str">"SELECT * FROM world_indicators"</span>, con)
+
+<span class="cm"># Scatter: GDP vs AI Adoption, animated by year</span>
+fig = px.<span class="fn">scatter</span>(df,
+    x=<span class="str">"GDP per capita"</span>,
+    y=<span class="str">"Estimated share ... generative AI"</span>,
+    color=<span class="str">"World region according to OWID"</span>,
+    size=<span class="str">"GDP per capita"</span>, size_max=<span class="num">30</span>,
+    animation_frame=<span class="str">"Year"</span>,
+    hover_name=<span class="str">"Entity"</span>,
+    template=<span class="str">"simple_white"</span>
+)
+
+<span class="cm"># Box: Distribution by region</span>
+fig2 = px.<span class="fn">box</span>(df,
+    x=<span class="str">"World region according to OWID"</span>,
+    y=<span class="str">"Estimated share ... generative AI"</span>,
+    color=<span class="str">"World region according to OWID"</span>
+)
+<span class="cm"># Asia outliers: Singapore 60.9%, UAE 64%</span>
+fig.<span class="fn">show</span>()<span class="code-cursor"></span></pre>
+            </div>
+            <div class="metric-chips">
+              <div style="padding: 8px 16px; font-size: 11px; color: var(--text2); font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                <strong style="color: var(--accent2);">Key insight:</strong> Higher GDP → higher AI adoption, but outliers like UAE (64%) and Singapore (60.9%) lead globally. Guyana vs Surinam shows income alone doesn't predict adoption.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training -->
+      <div class="project-card fade-up">
+        <div class="project-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="project-tags">
+          <span class="tag">Training</span><span class="tag">Power BI</span><span class="tag">Data Literacy</span>
+        </div>
+        <div class="project-title" data-i18n="proj4-title">BI Adoption & Data Literacy Program</div>
+        <div class="project-desc" data-i18n="proj4-desc">Designed and delivered a hands-on Power BI training curriculum for non-technical stakeholders, moving teams away from Excel dependency and significantly increasing self-service analytics adoption across business units.</div>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <div class="metric-val">↑</div>
+            <div class="metric-lbl" data-i18n="metric-adopt">Adoption Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG MODAL ══ -->
+<div id="blog-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); align-items:flex-start; justify-content:center; padding:2rem 1.5rem; overflow-y:auto;">
+  <div id="blog-modal-inner" style="background:var(--bg); border:1px solid var(--border2); border-radius:14px; max-width:760px; width:100%; margin:0 auto; position:relative;">
+    <div style="position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--border); padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; border-radius:14px 14px 0 0;">
+      <span id="modal-tag" style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--accent); text-transform:uppercase; padding:3px 10px; border:1px solid var(--border2); border-radius:3px;"></span>
+      <button onclick="closeBlogModal()" style="background:none; border:1px solid var(--border); color:var(--text2);  font-size:16px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:all 0.2s; line-height:1;" onmouseover="this.style.color='var(--text)'; this.style.borderColor='var(--border2)'" onmouseout="this.style.color='var(--text2)'; this.style.borderColor='var(--border)'">✕</button>
+    </div>
+    <div style="padding:2rem 2.5rem 2.5rem;">
+      <h2 id="modal-title" style="font-family:'Manrope',sans-serif; font-size:1.5rem; font-weight:800; color:var(--text); letter-spacing:-0.02em; line-height:1.2; margin-bottom:1.5rem;"></h2>
+      <div id="modal-body" style="color:var(--text2); font-size:14.5px; line-height:1.85;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BLOG ══ -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><span>03 — <span data-i18n="nav-blog">Blog</span></span></div>
+      <h2 class="section-title" data-i18n="blog-title">Thoughts & Readings.</h2>
+      <p class="section-subtitle" data-i18n="blog-subtitle">Concepts that transform how organizations use data — and how I apply them daily.</p>
+    </div>
+
+    <div class="blog-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px,1fr));">
+
+      <!-- DATA MESH -->
+      <div class="blog-card fade-up" style="border-left:3px solid var(--accent); " >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-tag-concept">Concept</span>
+          <span class="blog-date">2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog-dm-title">Data Mesh: when centralizing data is no longer the answer</div>
+        <div class="blog-excerpt" data-i18n="blog-dm-intro">For years, the dominant model was one central Data Warehouse controlled by a single team. Scalable in theory — a bottleneck in practice. Data Mesh changes the equation entirely.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-dm.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- FRAMEWORK DASH -->
+      <div class="blog-card fade-up" style="border-left:3px solid var(--accent2); " >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-tag-framework">Framework</span>
+          <span class="blog-date">2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog-dash-title">DASH Framework: designing dashboards people actually use</div>
+        <div class="blog-excerpt" data-i18n="blog-dash-intro">Beautiful dashboards that nobody checks after the first week. I've seen it too many times. The DASH Framework is the methodology I use to prevent exactly that.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-dash.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- DATA-DRIVEN CULTURE -->
+      <div class="blog-card fade-up" style="border-left:3px solid #ffd166; " >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-tag-culture">Culture</span>
+          <span class="blog-date">2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog-dd-title">Data-Driven Culture: the problem is not technical, it's human</div>
+        <div class="blog-excerpt" data-i18n="blog-dd-intro">I've deployed dashboards where managers kept using "their Excel" weeks after launch. The problem was never the dashboard — it was the culture.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-dd.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- BI PROJECTS FAIL -->
+      <div class="blog-card fade-up" style="" >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-type-opinion">Opinion</span>
+          <span class="blog-date">May 2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog1-title">Why most BI projects fail before the first dashboard is built</div>
+        <div class="blog-excerpt" data-i18n="blog1-excerpt">Requirements misalignment and stakeholder disconnect kill more BI projects than bad data. Here's the framework I use to align before I design.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-bi.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- STORYTELLING -->
+      <div class="blog-card fade-up" style="" >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-type-review">Book Review</span>
+          <span class="blog-date">Mar 2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog2-title">"Storytelling with Data" — Knaflic</div>
+        <div class="blog-excerpt" data-i18n="blog2-excerpt">A must-read that reframes data visualization as communication. My top 5 takeaways and how I applied them to executive dashboards at Aceros Turia.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-story.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- DAX vs PYTHON -->
+      <div class="blog-card fade-up" style="" >
+        <div class="blog-meta">
+          <span class="blog-type" data-i18n="blog-type-tech">Technical</span>
+          <span class="blog-date">Jan 2025</span>
+        </div>
+        <div class="blog-title" data-i18n="blog3-title">DAX vs Python for KPI automation: when to use which</div>
+        <div class="blog-excerpt" data-i18n="blog3-excerpt">Both tools are powerful, but they shine in different contexts. A practical decision guide based on 5 years working with both in production.</div>
+        <a class="blog-read-more" style="margin-top:1rem;" href="article-dax.html" data-i18n="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" style="background: var(--bg2);">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><span>04 — <span data-i18n="nav-contact">Contact</span></span></div>
+      <h2 class="section-title" data-i18n="contact-title">Let's build something with data.</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3 data-i18n="contact-h3">Ready to collaborate?</h3>
+        <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:1rem; padding:6px 14px; border-radius:20px; background:rgba(0,212,170,0.08); border:1px solid rgba(0,212,170,0.25);">
+          <span style="width:7px; height:7px; border-radius:50%; background:var(--accent2); display:inline-block; animation: blink 2s step-end infinite;"></span>
+          <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--accent2); text-transform:uppercase;" data-i18n="contact-available">Available for remote projects</span>
+        </div>
+        <p data-i18n="contact-p">Open for remote collaborations worldwide — BI consulting, dashboard development, data visualization projects, or just a conversation about data strategy. Based in Medellín, Colombia.</p>
+
+        <div class="contact-links">
+          <a href="mailto:jorgebaez7@gmail.com" class="contact-link">
+            <i><i class="fa-brands fa-google"></i></i>
+            <span>jorgebaez7@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jorge-baez-09b956157/" target="_blank" class="contact-link">
+            <i><i class="fa-brands fa-linkedin"></i></i>
+            <span>linkedin.com/in/jorge-baez</span>
+          </a>
+          <a href="https://www.instagram.com/jbaez_10/" target="_blank" class="contact-link">
+            <i><i class="fa-brands fa-instagram"></i></i>
+            <span>@jbaez_10</span>
+          </a>
+          <a href="CV-Jorge-Baez.pdf" download class="contact-link">
+            <i><i class="fa-solid fa-file-pdf"></i></i>
+            <span data-i18n="contact-cv">Download CV (PDF)</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-up">
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form-name">Name</label>
+            <input type="text" class="form-input" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form-email">Email</label>
+            <input type="email" class="form-input" placeholder="jane@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form-message">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-primary" data-i18n="form-send">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-copy" data-i18n="footer-copy">© 2026 Jorge Baez — Built with code & curiosity.</div>
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/in/jorge-baez-09b956157/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="mailto:jorgebaez7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    <a href="https://www.instagram.com/jbaez_10/"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script>
+// ── i18n ──
+const translations = {
+  en: {
+    'nav-about': 'About',
+    'nav-projects': 'Projects',
+    'nav-blog': 'Blog',
+    'nav-contact': 'Contact',
+    'hero-eyebrow': 'Senior Business Intelligence & Data Analytics Analyst',
+    'hero-title-1': 'I transform complex',
+    'hero-title-2': 'data',
+    'hero-title-3': 'into decisions.',
+    'hero-sub': '5+ years turning complex data into decision-ready intelligence. Power BI · SQL · Python · Stakeholder Management · Data Literacy · Business Strategy.',
+    'hero-cta1': 'View Projects',
+    'hero-cta2': 'Download CV',
+    'stat-years': 'Years Exp.',
+    'stat-reduction': 'Manual Reduction',
+    'stat-companies': 'Industries',
+    'about-title': 'The analyst behind the decisions.',
+    'about-subtitle': 'Business thinking, data fluency, and technical execution.',
+    'about-heading': 'Jorge Leonardo Báez Agreda',
+    'about-p1': 'Systems Engineer from Universidad de Oriente (Venezuela, 2015) and Business Intelligence Expert from Universidad Europea. I combine business understanding, analytical thinking, and technical execution to turn data into useful decisions.',
+    'about-p2': 'Currently at Aceros Turia as Senior BI Analyst, I work with stakeholders to translate business needs into reliable BI solutions, connect diverse data sources, and reduce the manual processes that slow decisions down.',
+    'about-cv-btn': 'Download Full CV',
+    'badge-years': 'Years in BI',
+    'exp1-role': 'Senior BI Analyst',
+    'exp1-desc': 'Executive dashboards · Stakeholder management · Anomaly detection · 30% less manual reporting · BI adoption training.',
+    'exp2-role': 'Data Analyst',
+    'exp2-desc': 'Standardized process dashboards · 25% greater business visibility · SQL & Excel data validation · Decision support.',
+    'exp3-role': 'BI Analyst',
+    'exp3-desc': 'KPI dashboards · SQL procedures · Data optimization · 20% reduction in manual reconciliations.',
+    'exp4-role': 'Data Analysis Coordinator',
+    'exp4-desc': 'Custom dashboards · Multi-area monitoring models · 18% process efficiency improvement.',
+    'proj-title': 'Data Visualization & BI Projects.',
+    'proj-subtitle': 'Business problems, data solutions, measurable outcomes.',
+    'tag-featured': 'Featured',
+    'proj1-title': 'Executive Operations Intelligence — Aceros Turia',
+    'proj1-desc': 'Replaced 6 disconnected Excel reports by connecting diverse data sources into a single Power BI workspace. Procurement, production, and distribution now visible in real time — eliminating manual consolidation for the executive team.',
+    'metric-manual': 'Manual Work ↓',
+    'metric-reports': 'Sources Unified',
+    'metric-rt': 'Real-time',
+    'proj2-title': 'KPI Monitoring & Decision Support',
+    'proj2-desc': 'Multi-source KPI dashboard eliminating manual Excel reporting. Business metrics consolidated from ERP and operational systems, with automated refresh and stakeholder-ready visual storytelling.',
+    'metric-visibility': 'Visibility ↑',
+    'proj3-title': 'AI Adoption vs GDP — Python Data Visualization',
+    'proj3-desc': 'Exploratory analysis of how a country\'s GDP per capita correlates with generative AI adoption. Data ingested via SQL, cleaned with pandas, visualized with animated Plotly scatter and box plots.',
+    'metric-uae': 'UAE AI Adoption',
+    'metric-regions': 'World Regions',
+    'proj4-title': 'BI Adoption & Data Literacy Program',
+    'proj4-desc': 'Designed and delivered a hands-on Power BI training curriculum for non-technical stakeholders, significantly increasing self-service analytics adoption.',
+    'metric-adopt': 'Adoption Rate',
+    'blog-title': 'Thoughts & Readings.',
+    'blog-subtitle': 'Concepts that transform how organizations use their data — and how I apply them in my work.',
+    'blog-tag-concept': 'Concept',
+    'blog-tag-framework': 'Framework',
+    'blog-tag-culture': 'Culture',
+    'blog-dm-title': 'Data Mesh: when centralizing data is no longer the answer',
+    'blog-dm-body': 'The dominant model for years was one central Data Warehouse controlled by a single data team. Scalable in theory. A bottleneck in practice. Data Mesh decentralizes data ownership: each business domain — sales, operations, finance — owns its data and exposes it as a consumable data product. Its four principles: domain ownership, data as a product, self-service infrastructure, and federated governance. In contexts where I work with multiple sources — ERP, operations, sales — the question is not just "how do I process this data?" but "who should be responsible for its reliability?"',
+    'blog-dash-title': 'DASH Framework: designing dashboards people actually use',
+    'blog-dash-body': 'One of the most common problems in BI is building beautiful dashboards that no one consults after the first week. The DASH Framework is the methodology I use to avoid exactly that.',
+    'blog-dd-title': 'Data-Driven Culture: the problem is not technical, it\'s human',
+    'blog-dd-body': 'I\'ve deployed dashboards in companies where, weeks after launch, managers were still making decisions based on the Excel they "always used". The problem was never the dashboard. It was the culture. A Data-Driven culture means every decision — from operations to the C-suite — is grounded in data, not intuition or hierarchy.',
+    'blog-type-opinion': 'Opinion',
+    'blog-type-review': 'Book Review',
+    'blog-type-tech': 'Technical',
+    'blog1-title': 'Why most BI projects fail before the first dashboard is built',
+    'blog1-excerpt': 'Requirements misalignment and stakeholder disconnect kill more BI projects than bad data. Here\'s a framework I use to align before I design.',
+    'blog2-title': '"Storytelling with Data" — Knaflic',
+    'blog2-excerpt': 'A must-read that reframes data visualization as communication. My top 5 takeaways and how I applied them to executive dashboards.',
+    'blog3-title': 'DAX vs Python for business KPI automation: when to use which',
+    'blog3-excerpt': 'Both tools are powerful, but they shine in different contexts. A practical decision guide based on 5 years in production environments.',
+    'blog-read': 'Read more',
+    'contact-title': 'Let\'s build something with data.',
+    'contact-h3': 'Ready to collaborate?',
+    'contact-p': 'Open for remote collaborations worldwide — BI consulting, dashboard development, data visualization projects, or just a conversation about data strategy. Based in Medellín, Colombia.',
+    'contact-available': 'Available for remote projects',
+    'contact-cv': 'Download CV (PDF)',
+    'form-name': 'Name',
+    'form-email': 'Email',
+    'form-message': 'Message',
+    'form-send': 'Send Message',
+    'footer-copy': '© 2026 Jorge Baez — Built with code & curiosity.',
+  },
+  es: {
+    'nav-about': 'Sobre mí',
+    'nav-projects': 'Proyectos',
+    'nav-blog': 'Blog',
+    'nav-contact': 'Contacto',
+    'hero-eyebrow': 'Analista Senior de Business Intelligence & Data Analytics',
+    'hero-title-1': 'Transformo datos',
+    'hero-title-2': 'complejos en',
+    'hero-title-3': 'mejores decisiones.',
+    'hero-sub': '+5 años convirtiendo datos complejos en inteligencia para la toma de decisiones. Power BI · SQL · Python · Stakeholder Management · Data Literacy · Business Strategy.',
+    'hero-cta1': 'Ver Proyectos',
+    'hero-cta2': 'Descargar CV',
+    'stat-years': 'Años de Exp.',
+    'stat-reduction': 'Reducción Manual',
+    'stat-companies': 'Industrias',
+    'about-title': 'La persona detrás de los dashboards.',
+    'about-subtitle': 'Ingeniero de formación, narrador de datos por pasión.',
+    'about-heading': 'Jorge Leonardo Báez Agreda',
+    'about-p1': 'Ingeniero de Sistemas de la Universidad de Oriente (Venezuela, 2015) y Experto en BI por la Universidad Europea. Esposo orgulloso y padre que cree que los datos solo importan cuando impulsan decisiones reales.',
+    'about-p2': 'Actualmente en Aceros Turia como Analista BI Senior — diseñando dashboards ejecutivos, conectando diversas fuentes de datos y eliminando los procesos manuales en Excel que antes frenaban las decisiones.',
+    'about-cv-btn': 'Descargar CV Completo',
+    'badge-years': 'Años en BI',
+    'exp1-role': 'Analista BI Senior',
+    'exp1-desc': 'Dashboards ejecutivos · Detección de anomalías · 30% menos reportes manuales · Capacitación en adopción de BI.',
+    'exp2-role': 'Analista de Datos',
+    'exp2-desc': 'Dashboards de procesos estandarizados · 25% más visibilidad del negocio · Validación de datos con SQL y Excel.',
+    'exp3-role': 'Analista BI',
+    'exp3-desc': 'Dashboards de KPIs · Procedimientos SQL para optimización de datos · 20% reducción en conciliaciones manuales.',
+    'exp4-role': 'Coordinador de Análisis de Datos',
+    'exp4-desc': 'Dashboards personalizados · Modelos de monitoreo multi-área · 18% mejora en eficiencia de procesos.',
+    'proj-title': 'Visualización de Datos & Proyectos BI.',
+    'proj-subtitle': 'Dashboards reales, análisis Python reales, decisiones reales habilitadas.',
+    'tag-featured': 'Destacado',
+    'proj1-title': 'Dashboard Ejecutivo de Operaciones — Aceros Turia',
+    'proj1-desc': 'Reemplazó 6 reportes desconectados en Excel conectando diversas fuentes de datos en un solo workspace Power BI. Compras, producción y distribución visibles en tiempo real — eliminando la consolidación manual.',
+    'metric-manual': 'Trabajo Manual ↓',
+    'metric-reports': 'Fuentes Unificadas',
+    'metric-rt': 'Tiempo Real',
+    'proj2-title': 'Dashboard de Monitoreo de KPIs',
+    'proj2-desc': 'Dashboard multi-fuente que elimina el reporte manual en Excel. Métricas de negocio consolidadas desde ERP y sistemas operacionales, con actualización automática y narrativa visual lista para stakeholders.',
+    'metric-visibility': 'Visibilidad ↑',
+    'proj3-title': 'Adopción IA vs PIB — Visualización de Datos en Python',
+    'proj3-desc': 'Análisis exploratorio de cómo el PIB per cápita de un país correlaciona con la adopción de IA generativa. Datos leídos vía SQL, limpios con pandas, visualizados con scatter animado y boxplots en Plotly.',
+    'metric-uae': 'Adopción IA EAU',
+    'metric-regions': 'Regiones Mundiales',
+    'proj4-title': 'Programa de Adopción y Capacitación BI',
+    'proj4-desc': 'Diseño e impartición de currículo práctico de Power BI para stakeholders no técnicos, incrementando significativamente el análisis self-service.',
+    'metric-adopt': 'Tasa de Adopción',
+    'blog-title': 'Pensamientos & Lecturas.',
+    'blog-subtitle': 'Conceptos que transforman cómo las organizaciones usan sus datos — y cómo los aplico en mi trabajo.',
+    'blog-tag-concept': 'Concepto',
+    'blog-tag-framework': 'Framework',
+    'blog-tag-culture': 'Cultura',
+    'blog-dm-title': 'Data Mesh: cuando centralizar los datos ya no es la respuesta',
+    'blog-dm-body': 'Durante años, el modelo dominante fue un único Data Warehouse centralizado controlado por un equipo de datos. Escalable en teoría. Un cuello de botella en la práctica. Data Mesh descentraliza la propiedad: cada dominio de negocio es dueño de sus datos y los expone como producto consumible. Sus cuatro principios: ownership por dominio, datos como producto, infraestructura self-service y gobernanza federada. En contextos donde trabajo con múltiples fuentes — ERP, operaciones, ventas — la pregunta no es solo "¿cómo proceso estos datos?" sino "¿quién debería ser responsable de su confiabilidad?"',
+    'blog-dash-title': 'Framework DASH: diseñar dashboards que realmente se usan',
+    'blog-dash-body': 'Uno de los problemas más comunes en BI es construir dashboards hermosos que nadie consulta después de la primera semana. El Framework DASH es la metodología que uso para evitar exactamente eso.',
+    'blog-dd-title': 'Cultura Data-Driven: el problema no es técnico, es humano',
+    'blog-dd-body': 'He implementado dashboards en empresas donde, semanas después del lanzamiento, los gerentes seguían tomando decisiones basadas en el Excel que "siempre habían usado". El problema nunca fue el dashboard. Fue la cultura. Una cultura Data-Driven significa que cada decisión — desde operaciones hasta la dirección — se basa en datos, no en intuición ni jerarquía.',
+    'blog-type-opinion': 'Opinión',
+    'blog-type-review': 'Reseña de Libro',
+    'blog-type-tech': 'Técnico',
+    'blog1-title': 'Por qué la mayoría de los proyectos BI fracasan antes del primer dashboard',
+    'blog1-excerpt': 'La desalineación de requerimientos mata más proyectos BI que los datos malos. Este es el framework que uso para alinearme antes de diseñar.',
+    'blog2-title': '"Storytelling with Data" — Knaflic',
+    'blog2-excerpt': 'Un libro imprescindible que replantea la visualización de datos como comunicación. Mis 5 aprendizajes clave y cómo los apliqué en Aceros Turia.',
+    'blog3-title': 'DAX vs Python para automatización de KPIs: cuándo usar cada uno',
+    'blog3-excerpt': 'Ambas herramientas son poderosas, pero brillan en contextos distintos. Una guía práctica basada en 5 años trabajando con ambas en producción.',
+    'blog-read': 'Leer más',
+    'contact-title': 'Construyamos algo con datos.',
+    'contact-h3': '¿Listo para colaborar?',
+    'contact-p': 'Abierto para colaboraciones remotas a nivel mundial — consultoría BI, desarrollo de dashboards, proyectos de visualización de datos o simplemente una conversación sobre estrategia de datos. Basado en Medellín, Colombia.',
+    'contact-available': 'Disponible para proyectos remotos',
+    'contact-cv': 'Descargar CV (PDF)',
+    'form-name': 'Nombre',
+    'form-email': 'Correo',
+    'form-message': 'Mensaje',
+    'form-send': 'Enviar Mensaje',
+    'footer-copy': '© 2026 Jorge Baez — Construido con código y curiosidad.',
+  }
+};
+
+let currentLang = 'en';
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
+  currentLang = lang;
+}
+
+document.getElementById('lang-btn').addEventListener('click', () => {
+  applyTranslations(currentLang === 'en' ? 'es' : 'en');
+});
+
+// ── THEME ──
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const themeIcon = document.getElementById('theme-icon');
+
+themeBtn.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+});
+
+// ── SCROLL NAV ──
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── MOBILE MENU ──
+document.getElementById('mobile-toggle').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('#mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+});
+
+// ── INTERSECTION OBSERVER (fade-up) ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+<section class="case-studies" id="case-studies">
+<div class="container">
+<div class="section-eyebrow">CASE STUDIES</div>
+<h2 class="section-title">From business problem to decision-ready insight.</h2>
+<p class="section-intro">Explore the thinking behind selected projects, then open the live Power BI report to see the solution.</p>
+<div class="case-grid">
+<article class="case-card">
+<div class="case-number">01</div><div class="case-area">Business Intelligence · Operations</div>
+<h3>Executive Operations Intelligence</h3><p class="case-summary">A centralized reporting solution designed to replace disconnected manual reporting and give operational stakeholders a clearer view of performance.</p>
+<div class="case-block"><strong>Business challenge</strong><p>The business relied on multiple reporting inputs and manual validation. The objective was to create a consistent view of operational information that leaders could use for faster decisions.</p></div>
+<div class="case-block"><strong>Approach</strong><p>I focused on stakeholder requirements, data validation, standardization of reporting logic and executive Power BI visualization.</p></div>
+<div class="case-block"><strong>Technology</strong><p>Power BI · SQL · Data Quality · Stakeholder Management</p></div>
+<div class="case-block"><strong>Impact</strong><p>The portfolio records a 30% reduction in manual processes and consolidation of six reporting sources into one solution.</p></div>
+<a class="case-link primary-link" href="https://app.powerbi.com/view?r=eyJrIjoiMTI1YjJlYzQtNTY1NS00OTljLThhNzAtZGRlYTFiMzY0YjEzIiwidCI6IjNkNmQwOGMxLWJlMzAtNDhjNy05NWQzLTI0NTA3MTQ4ZmQ0NCJ9" target="_blank" rel="noopener noreferrer">View Power BI Report →</a>
+</article>
+<article class="case-card">
+<div class="case-number">02</div><div class="case-area">Data Analytics · Performance Management</div>
+<h3>Operational KPI & Decision Support</h3><p class="case-summary">A KPI-oriented analytics solution focused on transforming operational data into information that can be monitored and acted upon.</p>
+<div class="case-block"><strong>Business challenge</strong><p>The challenge was to make operational performance easier to understand for technical and non-technical users, rather than simply presenting raw metrics.</p></div>
+<div class="case-block"><strong>Approach</strong><p>The solution combines data preparation, validation, KPI definition and visual storytelling so users can move from high-level performance to the information behind it.</p></div>
+<div class="case-block"><strong>Technology</strong><p>Power BI · SQL · Power Query · Data Visualization</p></div>
+<div class="case-block"><strong>Impact</strong><p>The work demonstrates executive dashboards, anomaly detection, automated reporting and stakeholder enablement.</p></div>
+<a class="case-link primary-link" href="https://app.powerbi.com/view?r=eyJrIjoiOGMwZjZjZTgtODBkZi00ZjYzLThkYWUtODMyMDJkMWEyY2I2IiwidCI6IjNkNmQwOGMxLWJlMzAtNDhjNy05NWQzLTI0NTA3MTQ4ZmQ0NCJ9" target="_blank" rel="noopener noreferrer">View Power BI Report →</a>
+</article>
+<article class="case-card">
+<div class="case-number">03</div><div class="case-area">Analytics · Data Storytelling</div>
+<h3>Artificial Intelligence</h3><p class="case-summary">An analytical report exploring the evolution and economic investment in artificial intelligence, adoption by countries and the sectors most impacted.</p>
+<div class="case-block"><strong>Business challenge</strong><p>The objective was to turn a broad technology topic into an interactive analytical story that makes trends and differences easier to explore.</p></div>
+<div class="case-block"><strong>Approach</strong><p>The project structures information around adoption, investment and sector impact, emphasizing clarity and interactive exploration.</p></div>
+<div class="case-block"><strong>Technology</strong><p>Power BI · Excel · Data Visualization</p></div>
+<div class="case-block"><strong>Impact</strong><p>This project adds a technology-focused analytical narrative and demonstrates the ability to communicate insights through interactive visualization.</p></div>
+<a class="case-link primary-link" href="https://app.powerbi.com/view?r=eyJrIjoiNmM5ZDJhZGQtZDA3OC00YjYyLWJkMWUtZmQ4YjJiMDM2ODBlIiwidCI6IjNkNmQwOGMxLWJlMzAtNDhjNy05NWQzLTI0NTA3MTQ4ZmQ0NCJ9" target="_blank" rel="noopener noreferrer">View Power BI Report →</a>
+</article></div>
+</div>
+</section>
+<section class="proof-section">
+<div class="container proof-inner">
+<div><div class="section-eyebrow">PROFESSIONAL PROFILE</div>
+<h2 class="section-title">See the experience behind the work.</h2>
+<p class="section-intro">My CV summarizes 5+ years of BI and data analytics experience, including Power BI, SQL, data quality, stakeholder management and data literacy.</p></div>
+<a class="case-link primary-link" href="CV-Jorge-Baez.pdf" download>Download CV →</a>
+</div>
+</section>
+</body>
+</html>
